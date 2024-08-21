@@ -651,7 +651,7 @@
 
 /*** footer start ***/
 .footer {
-    background: var(--bs-dark);
+    background: #decb99;
 }
 
 .footer .footer-item a,
@@ -674,7 +674,15 @@
 #icone {
     color: #decb99;
 }
-.price {
+#icon {
+    background-color: #decb99;
+}
+.colorfooter {
+    color: #000000;
+}
+#colfot {
+    margin-top: 20px;
+    line-height: 20px;
 }
 /*** copyright Start ***/
 .copyright {
