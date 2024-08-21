@@ -68,7 +68,7 @@
 
 .btn-primary-outline-0 {
     border: 0;
-    color: var(--bs-white) !important;
+    color: #fff;
 }
 
 .btn-light-outline-0 {
@@ -432,7 +432,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--bs-primary);
+    background: #b0d28c;
 }
 /*** Counter End ***/
 
@@ -668,7 +668,14 @@
 }
 
 /*** Footer End ***/
-
+.paragraphe {
+    color: #a7a7a7;
+}
+#icone {
+    color: #decb99;
+}
+.price {
+}
 /*** copyright Start ***/
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.08);

@@ -1,8 +1,3 @@
-/*!
-* Bootstrap v5.0.0 (https://getbootstrap.com/)
-* Copyright 2011-2021 The Bootstrap Authors
-* Copyright 2011-2021 Twitter, Inc.
-* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */:root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -99,12 +94,13 @@ h4,.h4 {
     }
 }
 h5,.h5 {
-    font-size:1.25rem
+    font-size: 18px;
 }
 h6,.h6 {
     font-size:1rem
 }
 p {
+    color:#fff;
     margin-top:0;
     margin-bottom:1rem
 }
@@ -163,7 +159,7 @@ sup {
     top:-0.5em
 }
 a {
-    color:#b0d28c;
+    color:#decb99;
     text-decoration:none
 }
 a:hover {
@@ -381,7 +377,7 @@ progress {
 }
 @media(min-width: 1200px) {
     .display-4 {
-        font-size:3.5rem
+        font-size: 35px;
     }
 }
 .display-5 {
@@ -5464,6 +5460,7 @@ textarea.form-control-lg {
     position:relative !important
 }
 .position-absolute {
+    bottom: 0; right: 0;
     position:absolute !important
 }
 .position-fixed {
@@ -5551,7 +5548,7 @@ textarea.form-control-lg {
     border-color:#decb99 !important
 }
 .border-secondary {
-    border-color:#884cd2 !important
+    border-color:#b0d28c !important
 }
 .border-success {
     border-color:#b0d28c !important
@@ -5916,6 +5913,7 @@ textarea.form-control-lg {
     margin-bottom:1rem !important
 }
 .mb-4 {
+    color: #a7a7a7;
     margin-bottom:1.5rem !important
 }
 .mb-5 {
@@ -6070,10 +6068,11 @@ textarea.form-control-lg {
     padding:.5rem !important
 }
 .p-3 {
+    max-width: 900px;
     padding:1rem !important
 }
 .p-4 {
-    padding:1.5rem !important
+    padding:5px !important
 }
 .p-5 {
     padding:3rem !important
@@ -6274,6 +6273,8 @@ textarea.form-control-lg {
     text-transform:lowercase !important
 }
 .text-uppercase {
+    padding-right: 10px;
+    font-size: 18px;
     text-transform:uppercase !important
 }
 .text-capitalize {
@@ -6290,7 +6291,8 @@ textarea.form-control-lg {
     word-break:break-word !important
 }
 .text-primary {
-    color:#decb99 !important
+    letter-spacing: 3px;
+    color:#5f9430 !important
 }
 .text-secondary {
     color:#884cd2 !important
