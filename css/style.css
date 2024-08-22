@@ -386,13 +386,13 @@
 }
 
 .appointment .appointment-form {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, .4));
+    background: linear-gradient(rgba(223, 203, 153, 0.4), rgba(223, 203, 153, 0.4)); /* Utilisation de #DECB99 */
     object-fit: cover;
     border-radius: 10px;
 }
 
 .appointment .appointment-time {
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, .2));
+    background: linear-gradient(rgba(95, 148, 48, 0.2), rgba(95, 148, 48, 0.2)); /* Utilisation de #5F9430 */
     object-fit: cover;
     border-radius: 10px;
 }
@@ -402,7 +402,7 @@
 .counter-section .counter-item .counter-content {
     position: relative;
     margin-bottom: 60px;
-    background-image: linear-gradient(rgba(252, 152, 195, 0.3), rgba(255, 255, 255, 0.3), rgba(136, 76, 210, 0.3));
+    background-image: linear-gradient(rgba(191, 221, 132, 0.3), rgba(176, 210, 140, 0.692), rgba(95, 148, 48, 0.3)); /* Combinaison de #B0D28C et #5F9430 */
     border-radius: 10px;
     z-index: 9;
 }
@@ -410,7 +410,7 @@
 .counter-section .counter-item {
     text-align: center;
     background: rgba(255, 255, 255, .5) !important;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(rgba(95, 148, 48, 0.3), rgba(95, 148, 48, 0.3)); /* Utilisation de #5F9430 */
     object-fit: cover;
     border-radius: 0 25% 0 25%;
 }
@@ -432,7 +432,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #b0d28c;
+    background: #decb99;
 }
 /*** Counter End ***/
 
@@ -669,7 +669,7 @@
 
 /*** Footer End ***/
 .paragraphe {
-    color: #a7a7a7;
+    color: #747171;
 }
 #icone {
     color: #decb99;
@@ -684,6 +684,10 @@
     margin-top: 20px;
     line-height: 20px;
 }
+.polygon-style polygon {
+    fill: #decb99;
+}
+
 /*** copyright Start ***/
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
