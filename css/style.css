@@ -50,9 +50,6 @@
 .btn-md-square,
 .btn-lg-square {
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: normal;
 }
 .btn-primary-outline-0 {
@@ -150,7 +147,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 2.5));
     background-size: cover;
 }
 .carousel-control-prev,
@@ -218,6 +215,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .appointment .appointment-form {
     background: linear-gradient(rgba(223, 203, 153, 0.4), rgba(223, 203, 153, 0.4)); /* Utilisation de #DECB99 */
@@ -311,6 +309,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .pricing .pricing-item {
     color: var(--bs-white);
@@ -465,4 +464,18 @@
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     background: var(--bs-dark) !important;
+}
+.row-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fab, .far {
+    margin-top: 9px;
+}
+.white {
+    color: #5f9430;
+}
+.bi {
+    color: #decb99;
 }
