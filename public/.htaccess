@@ -3,7 +3,7 @@
     RewriteEngine On
 
     # Définir Acceuil.html comme fichier par défaut
-    DirectoryIndex Acceuil.html
+    DirectoryIndex acceuil.html
 
     # Exclure sitemap.xml, robots.txt, acceuil.html, contact.html et send_email.php de la réécriture
     RewriteCond %{REQUEST_URI} !^/sitemap.xml$
