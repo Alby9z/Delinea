@@ -1,0 +1,146 @@
+# Activer la réécriture d'URL
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Définir Acceuil.html comme fichier par défaut
+    DirectoryIndex acceuil.html
+
+    # Exclure sitemap.xml, robots.txt, acceuil.html, contact.html et send_email.php de la réécriture
+    RewriteCond %{REQUEST_URI} !^/sitemap.xml$
+    RewriteCond %{REQUEST_URI} !^/robots.txt$
+    RewriteCond %{REQUEST_URI} !^/acceuil.html$
+    RewriteCond %{REQUEST_URI} !^/send_email.php$
+    RewriteCond %{REQUEST_URI} !^/contact.html$
+
+    # Si le fichier ou le dossier n'existe pas, réécrire l'URL vers Acceuil.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ acceuil.html [L]
+</IfModule>
+
+# Désactiver l'affichage du listing des répertoires
+Options -Indexes
+
+# Bloquer l'accès aux fichiers .htaccess
+<Files .htaccess>
+    Require all denied
+</Files>
+
+# Bloquer l'accès à des fichiers sensibles
+<FilesMatch "\.(htpasswd|ini|phps|fla|psd|log|sh|tpl|zip|exe|pl)$">
+    Require all denied
+</FilesMatch>
+
+# Protection contre le clicjacking
+<IfModule mod_headers.c>
+    Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+
+# Protection contre les attaques XSS
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Protection contre le vol de contenu
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Définir une politique de sécurité du contenu de base (ajustez selon vos besoins)
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
+</IfModule>
+
+# Bloquer l'accès aux fichiers de configuration sensibles
+<FilesMatch "(^#.*#|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+    Require all denied
+</FilesMatch>
+
+# Activer la compression gzip pour améliorer les performances
+<IfModule mod_deflate.c>
+    # Compresser les fichiers texte, HTML, JavaScript, CSS, XML
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Configurer l'expiration du cache pour améliorer les performances
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+</IfModule>
+
+<FilesMatch "sitemap.xml$">
+    ForceType application/xml
+</FilesMatch>
+
+<Files "sitemap.xml">
+    Require all granted
+</Files>
+
+<Files "robots.txt">
+    Require all granted
+</Files>
+
+<FilesMatch "^\.ht">
+    Require all denied
+</FilesMatch>
+
+# Empêche le hotlinking des images
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https:(www\.)?digiprogtechseo.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|bmp)$ - [F,NC,L]
+
+# Protection des cookies (Security, SameSite et HttpOnly)
+<IfModule mod_headers.c>
+    Header always edit Set-Cookie ^(.*)$ "$1;HttpOnly;Secure;SameSite=Strict"
+</IfModule>
+
+# Forcer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https:%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Politique de sécurité du contenu (CSP)
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; script-src 'self' 'https://digiprogtechseo.com'; style-src 'self' 'https://digiprogtechseo.com'; font-src 'self';"
+</IfModule>
+
+# Activer HSTS pour forcer HTTPS
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
