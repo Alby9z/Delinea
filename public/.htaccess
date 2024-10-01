@@ -11,11 +11,6 @@
     RewriteCond %{REQUEST_URI} !^/acceuil.html$
     RewriteCond %{REQUEST_URI} !^/send_email.php$
     RewriteCond %{REQUEST_URI} !^/contact.html$
-
-    # Si le fichier ou le dossier n'existe pas, réécrire l'URL vers Acceuil.html
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ acceuil.html [L]
 </IfModule>
 
 # Désactiver l'affichage du listing des répertoires
@@ -123,7 +118,7 @@ Options -Indexes
 
 # Empêche le hotlinking des images
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https:(www\.)?digiprogtechseo.com [NC]
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?délinéa-massages\.fr [NC]
 RewriteRule \.(jpg|jpeg|png|gif|bmp)$ - [F,NC,L]
 
 # Protection des cookies (Security, SameSite et HttpOnly)
