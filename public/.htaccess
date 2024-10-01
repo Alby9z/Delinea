@@ -2,15 +2,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Définir Acceuil.html comme fichier par défaut
+    # Définir acceuil.html comme fichier par défaut
     DirectoryIndex acceuil.html
 
-    # Exclure sitemap.xml, robots.txt, acceuil.html, contact.html et send_email.php de la réécriture
+    # Exclure certains fichiers de la réécriture
     RewriteCond %{REQUEST_URI} !^/sitemap.xml$
     RewriteCond %{REQUEST_URI} !^/robots.txt$
     RewriteCond %{REQUEST_URI} !^/acceuil.html$
     RewriteCond %{REQUEST_URI} !^/send_email.php$
-    RewriteCond %{REQUEST_URI} !^/contact.html$
+
+    # Exclure les images de la réécriture
+    RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|webp|svg|ico)$ [NC]
+
+    # Si le fichier ou le dossier n'existe pas, réécrire l'URL vers acceuil.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ acceuil.html [L]
 </IfModule>
 
 # Désactiver l'affichage du listing des répertoires
@@ -41,15 +48,10 @@ Options -Indexes
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
-# Définir une politique de sécurité du contenu de base (ajustez selon vos besoins)
+# Politique de sécurité du contenu de base (CSP)
 <IfModule mod_headers.c>
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self';"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:;"
 </IfModule>
-
-# Bloquer l'accès aux fichiers de configuration sensibles
-<FilesMatch "(^#.*#|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
-    Require all denied
-</FilesMatch>
 
 # Activer la compression gzip pour améliorer les performances
 <IfModule mod_deflate.c>
@@ -77,12 +79,12 @@ Options -Indexes
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
 
-  # Video
+  # Vidéos
   ExpiresByType video/webm "access plus 1 year"
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/mpeg "access plus 1 year"
 
-  # Fonts
+  # Polices
   ExpiresByType font/ttf "access plus 1 year"
   ExpiresByType font/otf "access plus 1 year"
   ExpiresByType font/woff "access plus 1 year"
@@ -95,47 +97,31 @@ Options -Indexes
   ExpiresByType text/javascript "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
 
-  # Others
+  # Autres fichiers
   ExpiresByType application/pdf "access plus 1 year"
   ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
 </IfModule>
 
-<FilesMatch "sitemap.xml$">
-    ForceType application/xml
-</FilesMatch>
+# Forcer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-<Files "sitemap.xml">
-    Require all granted
-</Files>
+# Activer HSTS pour forcer HTTPS
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
 
-<Files "robots.txt">
-    Require all granted
-</Files>
-
-<FilesMatch "^\.ht">
-    Require all denied
-</FilesMatch>
-
-# Empêche le hotlinking des images
+# Empêcher le hotlinking des images
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https://(www\.)?délinéa-massages\.fr [NC]
-RewriteRule \.(jpg|jpeg|png|gif|bmp)$ - [F,NC,L]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?délinéa-massages\.fr [NC]
+RewriteRule \.(jpg|jpeg|png|gif|bmp|webp)$ - [F,NC,L]
 
 # Protection des cookies (Security, SameSite et HttpOnly)
 <IfModule mod_headers.c>
     Header always edit Set-Cookie ^(.*)$ "$1;HttpOnly;Secure;SameSite=Strict"
 </IfModule>
 
-# Forcer HTTPS
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https:%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Politique de sécurité du contenu (CSP)
-<IfModule mod_headers.c>
-    Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; script-src 'self' 'https://digiprogtechseo.com'; style-src 'self' 'https://digiprogtechseo.com'; font-src 'self';"
-</IfModule>
-
-# Activer HSTS pour forcer HTTPS
-<IfModule mod_headers.c>
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-</IfModule>
+# Bloquer l'accès aux fichiers de configuration sensibles
+<FilesMatch "(^#.*#|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+    Require all denied
+</FilesMatch>
