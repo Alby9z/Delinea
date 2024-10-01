@@ -237,9 +237,8 @@
                                         <h3>Réinitialisation Neuronal</h3>
                                         <p class="paragraphe">Offrez à votre esprit une pause bien méritée 
                                             avec notre soin de Réinitialisation Neuronal. Ce massage unique 
-                                            vise à relâcher les tensions mentales, favoriser la clarté 
-                                            d'esprit, et revitaliser vos capacités cognitives. 
-                                            Une expérience profonde pour un bien-être mental durable.</p>
+                                            vise à relâcher les tensions musculaires. 
+                                            Une expérience profonde pour un bien-être durable.</p>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -913,7 +912,7 @@
                         <div class="appointment-form p-5">
                             <p id="icone" class="fs-4 text-uppercase">Contactez-Nous</p>
                             <h1 class="display-4 mb-4 text-white">Prendre Rendez-vous</h1>
-                            <form>
+                            <form action="send_email.php" method="POST">
                                 <div class="row gy-3 gx-4">
                                     <div class="col-lg-6">
                                         <input type="text" 
@@ -935,33 +934,36 @@
                                         aria-label="Choisir un service" 
                                         title="Choisissez un service">
                                             <option selected aria-label="Choisir un service">Choisir un service</option>
-                                            <option value="6">Réinitialisation Neuronale (NRT)</option>
-                                            <option value="5">Massage Femmes Enceintes</option>
-                                            <option value="4">Massage Lomi Lomi</option>
-                                            <option value="11">Massage Californien</option>
-                                            <option value="10">Massage Suédois</option>
-                                            <option value="12">Massage pour Personnes Âgées</option>
+                                            <option class="blacktext" value="6">Réinitialisation Neuronale (NRT)</option>
+                                            <option class="blacktext" value="5">Massage Femmes Enceintes</option>
+                                            <option class="blacktext" value="4">Massage Lomi Lomi</option>
+                                            <option class="blacktext" value="11">Massage Californien</option>
+                                            <option class="blacktext" value="10">Massage Suédois</option>
+                                            <option class="blacktext" value="12">Massage pour Personnes Âgées</option>
                                         </select>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 position-relative">
                                         <input 
-                                        type="date" 
-                                        class="form-control py-3 border-white bg-transparent"
-                                        placeholder="Date de naissance"
-                                        title="Sélectionnez une date" 
-                                        aria-label="Sélectionner une date">
+                                            type="text" 
+                                            class="form-control py-3 border-white bg-transparent text-white"
+                                            id="birthdate"
+                                            placeholder="Date de naissance"
+                                            onfocus="(this.type='date')" 
+                                            onblur="if(!this.value) this.type='text'"
+                                            title="Sélectionnez une date" 
+                                            aria-label="Sélectionner une date"
+                                            style="color: white;">
                                     </div>
                                     <div class="col-lg-12">
                                         <textarea 
-                                        class="form-control border-white bg-transparent text-white" 
-                                        name="text" 
-                                        id="area-text" 
-                                        cols="30" 
-                                        rows="5" 
-                                        placeholder="Commentaires" 
-                                        title="Entrez vos commentaires" 
-                                        aria-label="Commentaires">
-                                        </textarea>
+                                            class="form-control border-white bg-transparent text-white" 
+                                            name="text" 
+                                            id="area-text" 
+                                            cols="30" 
+                                            rows="5" 
+                                            placeholder="Messages" 
+                                            title="Entrez vos commentaires" 
+                                            aria-label="Commentaires"></textarea>
                                     </div>
                                     <div class="col-lg-12">
                                         <button 
