@@ -1,29 +1,3 @@
-*/:root {
-    --bs-blue: #0d6efd;
-    --bs-indigo: #6610f2;
-    --bs-purple: #6f42c1;
-    --bs-pink: #d63384;
-    --bs-red: #dc3545;
-    --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
-    --bs-cyan: #0dcaf0;
-    --bs-white: #fff;
-    --bs-gray: #6c757d;
-    --bs-gray-dark: #343a40;
-    --bs-primary: #5f9430;
-    --bs-secondary: #884CD2;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
-    --bs-danger: #dc3545;
-    --bs-light: #F9F8F6;
-    --bs-dark: #1C1A1D;
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
-}
 *,*::before,*::after {
     box-sizing:border-box;
 }
@@ -263,9 +237,6 @@ select:disabled {
 [list]::-webkit-calendar-picker-indicator {
     display:none
 }
-button,[type=button],[type=reset],[type=submit] {
-    -webkit-appearance:button
-}
 button:not(:disabled),[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled) {
     cursor:pointer
 }
@@ -306,7 +277,6 @@ legend+* {
 }
 [type=search] {
     outline-offset:-2px;
-    -webkit-appearance:textfield
 }
 ::-webkit-search-decoration {
     -webkit-appearance:none
@@ -1899,8 +1869,6 @@ textarea.form-control-lg {
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
-    -webkit-print-color-adjust:exact;
-    color-adjust:exact
 }
 .form-check-input[type=checkbox] {
     border-radius:.25em
@@ -9465,7 +9433,7 @@ textarea.form-control-lg {
     }
     .text-xxl-start {
         text-align:left !important;
-    };
+    }
     .text-xxl-end {
         text-align:right !important;
     }
