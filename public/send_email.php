@@ -9,14 +9,13 @@ use PHPMailer\PHPMailer\SMTP;
 require __DIR__ . '/PHPMailer/src/Exception.php';
 require __DIR__ . '/PHPMailer/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer/src/SMTP.php';
-require __DIR__ . '/../../config.php'; // Pour inclure les constantes SMTP_USERNAME et SMTP_PASSWORD
+require __DIR__ . '/../config.php'; // Pour inclure les constantes SMTP_USERNAME et SMTP_PASSWORD
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
     $prenom = isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8') : '';
     $email = isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : '';
     $service = isset($_POST['service']) ? htmlspecialchars($_POST['service'], ENT_QUOTES, 'UTF-8') : '';
-    $date_naissance = isset($_POST['birthdate']) ? htmlspecialchars($_POST['birthdate'], ENT_QUOTES, 'UTF-8') : '';
     $message = isset($_POST['text']) ? htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8') : '';
 
     // Vérifier que les champs requis sont remplis
@@ -40,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->CharSet    = 'UTF-8'; // Pour gérer les accents
 
         // Définir l'expéditeur et le destinataire
-        $mail->setFrom('info_contact@digiprogtechseo.com', 'DigiprogtechSEO');
-        $mail->addAddress('digiprogtech@gmail.com'); // Adresse de réception
+        $mail->setFrom('info_contact@délinéa-massages.fr', 'Délinéa-massages');
+        $mail->addAddress('lukas.dias2004@gmail.com'); // Adresse de réception
 
         // Contenu de l'email
         $mail->isHTML(true);
@@ -53,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p><strong>Prénom : </strong> $prenom</p>
             <p><strong>Email : </strong> $email</p>
             <p><strong>Service choisi : </strong> $service</p>
-            <p><strong>Date de naissance : </strong> $date_naissance</p>
             <p><strong>Message : </strong> $message</p>
         ";
 
@@ -63,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             Prénom : $prenom\n
             Email : $email\n
             Service choisi : $service\n
-            Date de naissance : $date_naissance\n
             Message : $message
         ";
 
