@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->CharSet    = 'UTF-8'; // Pour gérer les accents
 
         // Définir l'expéditeur et le destinataire
-        $mail->setFrom('info_contact@délinéa-massages.fr', 'Délinéa-massages');
+        $mail->setFrom('info_contact@xn--dlin-massage-bkb.fr', 'Délinéa-massages');
         $mail->addAddress('lukas.dias2004@gmail.com'); // Adresse de réception
 
         // Contenu de l'email
