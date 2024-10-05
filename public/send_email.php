@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = isset($_POST['text']) ? htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8') : '';
 
     // Vérifier que les champs requis sont remplis
-    if (empty($prenom) || empty($email) || empty($service) || empty($date_naissance)) {
+    if (empty($prenom) || empty($email) || empty($service)) {
         echo 'Veuillez remplir tous les champs obligatoires.';
         exit;
-    }
+    }    
 
     // Créer une instance de PHPMailer
     $mail = new PHPMailer(true);
