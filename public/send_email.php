@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\SMTP;
 require __DIR__ . '/PHPMailer/src/Exception.php';
 require __DIR__ . '/PHPMailer/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer/src/SMTP.php';
-require __DIR__ . '/../config.php'; // Pour inclure les constantes SMTP_USERNAME et SMTP_PASSWORD
+require __DIR__ . '../config.php'; // Pour inclure les constantes SMTP_USERNAME et SMTP_PASSWORD
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
