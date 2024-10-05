@@ -112,9 +112,10 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
 # Empêcher le hotlinking des images
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https?://(www\.)?délinéa-massages\.fr [NC]
-RewriteRule \.(jpg|jpeg|png|gif|bmp|webp)$ - [F,NC,L]
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^https?://(www\.)?délinéa-massages\.fr [NC]
+# RewriteRule \.(jpg|jpeg|png|gif|bmp|webp)$ - [F,NC,L]
+
 
 # Protection des cookies (Security, SameSite et HttpOnly)
 <IfModule mod_headers.c>
