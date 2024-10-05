@@ -32,10 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->isSMTP();                                            
         $mail->Host       = 'smtp.ionos.fr';                      
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = SMTP_USERNAME; // Nom d'utilisateur SMTP (défini dans config.php)
-        $mail->Password   = SMTP_PASSWORD; // Mot de passe SMTP (défini dans config.php)
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
-        $mail->Port       = 587;                                   
+        $mail->Username   = 'info_contact@xn--dlin-massage-bkb.fr'; // Nom d'utilisateur SMTP (défini dans config.php)
+        $mail->Password   = '3djS74yXfs2Nwp5'; // Mot de passe SMTP (défini dans config.php)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
+        $mail->Port       = 465;                                   
         $mail->CharSet    = 'UTF-8'; // Pour gérer les accents
 
         // Définir l'expéditeur et le destinataire
