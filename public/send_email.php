@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Définir l'expéditeur et le destinataire
         $mail->setFrom('info_contact@xn--dlina-massages-bkbd.fr', 'Délinéa-massages');
-        $mail->addAddress('lukas.dias2004@gmail.com'); // Adresse de réception
+        $mail->addAddress('delinea.massage@gmail.com'); // Adresse de réception
 
         // Contenu de l'email
         $mail->isHTML(true);
