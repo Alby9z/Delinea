@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->Body    = "
             <h2>Nouvelle demande de contact</h2>
             <p><strong>Prénom : </strong> $prenom</p>
-            <p><strong>Prénom : </strong> $nom</p>
+            <p><strong>Nom : </strong> $nom</p>
             <p><strong>Email : </strong> $email</p>
             <p><strong>Service choisi : </strong> $service</p>
             <p><strong>Message : </strong> $message</p>
