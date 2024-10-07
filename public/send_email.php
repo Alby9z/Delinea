@@ -14,12 +14,13 @@ require __DIR__ . '/../config.php'; // Pour inclure les constantes SMTP_USERNAME
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
     $prenom = isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8') : '';
+    $nom = isset($_POST['nom']) ? htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8') : '';
     $email = isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : '';
     $service = isset($_POST['service']) ? htmlspecialchars($_POST['service'], ENT_QUOTES, 'UTF-8') : '';
     $message = isset($_POST['text']) ? htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8') : '';
 
     // Vérifier que les champs requis sont remplis
-    if (empty($prenom) || empty($email) || empty($service)) {
+    if (empty($prenom) || empty($nom) || empty($email) || empty($service)) {
         echo 'Veuillez remplir tous les champs obligatoires.';
         exit;
     }    
@@ -28,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = new PHPMailer(true);
 
     try {
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         // Paramètres du serveur SMTP
         $mail->isSMTP();                                            
         $mail->Host       = 'smtp.ionos.fr';                      
@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->Body    = "
             <h2>Nouvelle demande de contact</h2>
             <p><strong>Prénom : </strong> $prenom</p>
+            <p><strong>Prénom : </strong> $nom</p>
             <p><strong>Email : </strong> $email</p>
             <p><strong>Service choisi : </strong> $service</p>
             <p><strong>Message : </strong> $message</p>
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->AltBody = "
             Nouvelle demande de contact\n
             Prénom : $prenom\n
+            Nom : $nom\n
             Email : $email\n
             Service choisi : $service\n
             Message : $message
