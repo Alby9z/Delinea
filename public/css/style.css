@@ -503,3 +503,15 @@
 .display-3 {
     text-align: center;
 }
+.center-img {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.video1 {
+    display: flex;
+    justify-content: center;
+}
+.paragraphe1 {
+    font-size: 15px;
+}
